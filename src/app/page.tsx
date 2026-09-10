@@ -110,6 +110,25 @@ function SparkIcon() {
   );
 }
 
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" className="icon-dot" />
+    </svg>
+  );
+}
+
+function KickstarterIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <path d="M9 7v10M9.5 12l5-5M9.5 12l5 5" />
+    </svg>
+  );
+}
+
 function CampaignCta({
   eyebrow,
   title,
@@ -396,7 +415,29 @@ export default function Home() {
           <a href="#gameplay">How to play</a>
           <a href="#cards">The deck</a>
         </div>
-        <p>© {new Date().getFullYear()} Doghouse Derby.<br />All dogs reserved.</p>
+        <div className="footer-end">
+          <div className="social-links" aria-label="Doghouse Derby social channels">
+            <a
+              className="social-link"
+              href="https://www.kickstarter.com/projects/doghousederby/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Follow Doghouse Derby on Kickstarter"
+            >
+              <KickstarterIcon /> Kickstarter
+            </a>
+            <a
+              className="social-link"
+              href="https://www.instagram.com/doghousederby/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Follow Doghouse Derby on Instagram"
+            >
+              <InstagramIcon /> Instagram
+            </a>
+          </div>
+          <p>© {new Date().getFullYear()} Doghouse Derby.<br />All dogs reserved.</p>
+        </div>
       </footer>
     </main>
   );
