@@ -152,6 +152,7 @@ function CampaignCta({
 export default function Home() {
   return (
     <main className="site-shell" id="top">
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <div className="announcement">
         <span>Campaign in development</span>
         <p>Follow the project and be first through the kennel doors.</p>
@@ -164,7 +165,7 @@ export default function Home() {
             src="/doghouse-derby-city-poster-v3.png"
             alt=""
             fill
-            priority
+            preload
             sizes="100vw"
           />
         </div>
@@ -172,7 +173,7 @@ export default function Home() {
 
         <nav className="topbar" aria-label="Campaign navigation">
           <a className="brand" href="#top" aria-label="Doghouse Derby home">
-            <Image src="/doghouse-derby-logo-v2.png" alt="Doghouse Derby" width={150} height={100} priority />
+            <Image src="/doghouse-derby-logo-v2.png" alt="Doghouse Derby" width={150} height={100} />
           </a>
           <div className="nav-links">
             <a href="#world">The world</a>
@@ -182,7 +183,7 @@ export default function Home() {
           <a className="nav-cta" href="#reserve">Notify me on launch <ArrowIcon /></a>
         </nav>
 
-        <div className="hero-inner">
+        <div className="hero-inner" id="main-content" tabIndex={-1}>
           <div className="hero-copy">
             <div className="eyebrow eyebrow-light"><SparkIcon /> An original card game</div>
             <h1 id="hero-title">
@@ -395,13 +396,24 @@ export default function Home() {
           <div className="reserve-form-card">
             <span>Invitation 001</span>
             <strong>Join the founding pack.</strong>
-            <p>One useful email when the campaign goes live.</p>
+            <p id="signup-description">One useful email when the campaign goes live.</p>
             <form className="signup-form" action="mailto:hello@doghousederby.com" method="post" encType="text/plain">
               <label className="sr-only" htmlFor="email">Email address</label>
-              <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                autoCapitalize="none"
+                spellCheck="false"
+                placeholder="Enter your email address"
+                aria-describedby="signup-description privacy-note"
+                required
+              />
               <button type="submit">Notify me on launch <ArrowIcon /></button>
             </form>
-            <small className="privacy-note">No spam. Unsubscribe anytime.</small>
+            <small className="privacy-note" id="privacy-note">No spam. Unsubscribe anytime.</small>
           </div>
         </div>
       </section>
@@ -410,13 +422,13 @@ export default function Home() {
         <a className="footer-brand" href="#top">
           <Image src="/doghouse-derby-logo-v2.png" alt="Doghouse Derby — an original card game" width={180} height={120} />
         </a>
-        <div className="footer-links">
+        <nav className="footer-links" aria-label="Footer navigation">
           <a href="#world">The world</a>
           <a href="#gameplay">How to play</a>
           <a href="#cards">The deck</a>
-        </div>
+        </nav>
         <div className="footer-end">
-          <div className="social-links" aria-label="Doghouse Derby social channels">
+          <nav className="social-links" aria-label="Doghouse Derby social channels">
             <a
               className="social-link"
               href="https://www.kickstarter.com/projects/doghousederby/"
@@ -435,7 +447,7 @@ export default function Home() {
             >
               <InstagramIcon /> Instagram
             </a>
-          </div>
+          </nav>
           <p>© {new Date().getFullYear()} Doghouse Derby.<br />All dogs reserved.</p>
         </div>
       </footer>
